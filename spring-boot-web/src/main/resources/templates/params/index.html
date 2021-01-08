@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Enviar parametros del REQUEST GET</title>
+</head>
+<body>
+	<h1>Enviar parametros del REQUEST GET</h1>
+	<ul>
+		<li><a th:href="@{/params/string(texto='Hola Andres')}">/params/string?texto=
+				Hola Andres</a></li>
+		<li><a th:href="@{/params/string(texto='Como estás?')}">/params/string?texto=
+				Cómo estás?</a></li>
+		<li><a
+			th:href="@{/params/mix-params(saludo='Bienvenidos',numero=40)}">/mix-params/string?saludo=
+				Bievenidos,numero=40</a></li>
+
+		<li><a
+			th:href="@{/params/mix-params-request(saludo='Bienvenidos',numero=40)}">/mix-params-request/string?saludo=
+				Bievenidos,numero=40</a></li>
+
+	</ul>
+</body>
+</html>
