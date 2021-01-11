@@ -2,13 +2,12 @@ package com.bolsadeideas.springboot.di.app.models.services;
 
 import org.springframework.stereotype.Component;
 
-@Component("miServicioSimple")
+//@Component("miServicioSimple")
 public class MiServicio implements IServicio {
 
 	@Override
 	public String operacion() {
-		return "ejecutando un proceso";
+		return "ejecutando un proceso simple";
 	}
-	
 
 }
