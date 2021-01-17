@@ -1,30 +1,84 @@
 package com.bolsadeideas.springboot.form.app.models.domains;
 
+import java.util.Date;
+
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
+
+//import org.springframework.format.annotation.DateTimeFormat;
+
+import com.bolsadeideas.springboot.form.app.validation.IdentificadorRegex;
+import com.bolsadeideas.springboot.form.app.validation.Requerido;
 
 public class Usuario {
 
+	// @Pattern(regexp = "[0-9]{2}[.][\\d]{3}[.][\\d]{3}[-][A-Z]{1}")
+	@IdentificadorRegex
 	private String identificador;
-	
-	@NotEmpty(message = "El nombre no puede ser vacio")
+
+	// @NotEmpty(message = "El nombre no puede ser vacio")
 	private String nombre;
-	
-	@NotEmpty(message = "El apellido no puede ser vacio")
+
+	// @NotEmpty(message = "El apellido no puede ser vacio")
+	@Requerido
 	private String apellido;
 
-	@NotEmpty
+	@NotBlank
 	@Size(min = 3, max = 8)
 	private String username;
 
-	@NotEmpty
+	@Requerido
 	private String password;
 
-	@NotEmpty
+	private Integer cuenta;
+
+	@Past
+	@NotNull
+	// @DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date fechaNacimiento;
+
+	@NotNull
+	@Min(5)
+	@Max(5000)
+	public Integer getCuenta() {
+		return cuenta;
+	}
+
+	@Requerido
 	@Email(message = "Correo con formato incorrecto")
 	private String email;
-	
+
+	@Valid
+	private Pais pais;
+
+	public Pais getPais() {
+		return pais;
+	}
+
+	public void setPais(Pais pais) {
+		this.pais = pais;
+	}
+
+	public Date getFechaNacimiento() {
+		return fechaNacimiento;
+	}
+
+	public void setFechaNacimiento(Date fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
+	}
+
+	public void setCuenta(Integer cuenta) {
+		this.cuenta = cuenta;
+	}
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -72,6 +126,5 @@ public class Usuario {
 	public void setIdentificador(String identificador) {
 		this.identificador = identificador;
 	}
-	
 
 }
